@@ -1,3 +1,5 @@
+/*eslint no-invalid-this: "off"*/
+
 export default function where(terms, defaults = []) {
   const and = [];
 
