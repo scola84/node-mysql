@@ -1,19 +1,13 @@
 /*eslint no-invalid-this: "off"*/
 
-const directions = {
-  'asc': 'asc',
-  'desc': 'desc'
-};
-
 export default function(orders) {
-  if (orders.length === 0) {
+  const fields = Object.keys(orders);
+
+  if (fields.length === 0) {
     return '';
   }
 
-  orders = orders.map((order) => {
-    return this.escapeId(order.column) + ' ' +
-      (directions[order.direction] || 'asc');
-  });
-
-  return ' ORDER BY ' + orders.join(', ');
+  return ' ORDER BY ' + fields.map((field) => {
+    return this.escapeId(field) + ' ' + fields[field];
+  }).join(',');
 }

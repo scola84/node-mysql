@@ -1,15 +1,24 @@
 /*eslint no-invalid-this: "off"*/
 
-export default function where(terms, defaults = []) {
+export default function where(fields, defaults = []) {
   const and = [];
+  const entries = [];
 
-  Object.keys(terms).forEach((term) => {
+  Object.keys(fields).map((field) => {
+    fields[field].forEach((value) => {
+      entries.push({
+        fields: field ? [field] : defaults,
+        value
+      });
+    });
+  });
+
+  entries.forEach((entry) => {
     const or = [];
-    const fields = terms[term].length > 0 ? terms[term] : defaults;
 
-    fields.forEach((field) => {
+    entry.fields.forEach((field) => {
       or.push(this.escapeId(field) + ' LIKE ' +
-        this.escape('%' + term + '%'));
+        this.escape('%' + entry.value + '%'));
     });
 
     if (or.length > 0) {
