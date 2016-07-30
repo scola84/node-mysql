@@ -8,6 +8,6 @@ export default function(orders) {
   }
 
   return ' ORDER BY ' + fields.map((field) => {
-    return this.escapeId(field) + ' ' + fields[field];
+    return this.escapeId(field) + ' ' + orders[field];
   }).join(',');
 }
