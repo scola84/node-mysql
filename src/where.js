@@ -21,9 +21,9 @@ export default function where(fields, defaults = []) {
 
     entry.fields.forEach((field) => {
       field = this.escapeId(field);
-      match = isNaN(entry.value) ? ' LIKE ' : ' = ';
-      value = isNaN(entry.value) ?
-        this.escape('%' + entry.value + '%') : entry.value;
+      match = typeof entry.value === 'number' ? ' = ' : ' LIKE ';
+      value = typeof entry.value === 'number' ?
+        entry.value : this.escape('%' + entry.value + '%');
 
       or.push(field + match + value);
     });
