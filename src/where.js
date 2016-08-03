@@ -16,9 +16,16 @@ export default function where(fields, defaults = []) {
   entries.forEach((entry) => {
     const or = [];
 
+    let match = null;
+    let value = null;
+
     entry.fields.forEach((field) => {
-      or.push(this.escapeId(field) + ' LIKE ' +
-        this.escape('%' + entry.value + '%'));
+      field = this.escapeId(field);
+      match = isNaN(entry.value) ? ' LIKE ' : ' = ';
+      value = isNaN(entry.value) ?
+        this.escape('%' + entry.value + '%') : entry.value;
+
+      or.push(field + match + value);
     });
 
     if (or.length > 0) {
