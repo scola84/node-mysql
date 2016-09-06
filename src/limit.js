@@ -1,5 +1,5 @@
-export default function limit(limit) {
-  return typeof limit.offset !== 'undefined' &&
-    typeof limit.count !== 'undefined' ?
-    ' LIMIT ' + limit.offset + ',' + limit.count : '';
+export default function limit(value) {
+  return typeof value.offset !== 'undefined' &&
+    typeof value.count !== 'undefined' ?
+    ' LIMIT ' + value.offset + ',' + value.count : '';
 }
