@@ -1,6 +1,6 @@
 {
   "name": "@scola/mysql",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MySQL Helpers",
   "repository": "github:scola84/node-mysql",
   "author": "M.C. van den Boogaart <scola@kvdb.name>",
