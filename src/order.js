@@ -1,6 +1,6 @@
 /*eslint no-invalid-this: "off"*/
 
-export default function(orders) {
+export default function(orders = {}) {
   const fields = Object.keys(orders);
 
   if (fields.length === 0) {

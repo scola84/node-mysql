@@ -1,6 +1,6 @@
 /*eslint no-invalid-this: "off"*/
 
-export default function where(fields, defaults = []) {
+export default function where(fields = {}, defaults = []) {
   const and = [];
   const entries = [];
 
